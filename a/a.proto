@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+package a;
+
+option go_package = "github.com/robfig/gogofast-repro/pb/a";
+
+message SearchFilter {
+  enum Bool {
+    FALSE = 0;
+    TRUE = 1;
+    NULL = 2;
+  }
+
+  optional Bool bit = 19 [default = NULL];
+}
+
+
+message OtherBackend {
+  message EntitySearchFilter {
+    optional SearchFilter.Bool bit = 23 [default = NULL];
+  }
+}

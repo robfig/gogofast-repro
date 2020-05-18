@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package b;
+
+import "a/a.proto";
+
+option go_package = "github.com/robfig/gogofast-repro/pb/b";
+
+message SavedSearchValue {
+    oneof filter {
+        a.SearchFilter search_filter = 1;
+        a.OtherBackend.EntitySearchFilter other_search_filter = 2;
+    }
+}
+
+message ListSavedSearchResponse {
+    message SavedSearch {
+        SavedSearchValue saved_search_value = 3;
+    }
+    repeated SavedSearch saved_search = 1;
+}
